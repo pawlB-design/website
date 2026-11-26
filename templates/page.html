@@ -1,3 +1,3 @@
 {% extends 'base.html' %}
 {% block title %}{{ page.title }} — {{ config.title }}{% endblock %}
-{% block content %}<article class="wrap article"><a href="{{ get_url(path='@/games/_index.md') }}">All games</a><h1>{{ page.title }}</h1><div class="prose">{{ page.content | safe }}</div></article>{% endblock %}
+{% block content %}<article class="wrap article{% if page.slug == 'geste' %} game-page-geste{% endif %}"{% if page.slug == 'geste' %} style="--geste-bg: url('{{ get_url(path='images/geste-cover.jpeg') }}')"{% endif %}><a href="{{ get_url(path='@/games/_index.md') }}">All games</a><h1>{{ page.title }}</h1><div class="prose">{{ page.content | safe }}</div></article>{% endblock %}

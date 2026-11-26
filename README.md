@@ -4,6 +4,27 @@ A small Zola site: homepage, games, and a Patreon-backed blog. No frontend build
 chain, external fonts, analytics, database, or JavaScript dependency. This is a
 local framework; the final identity, artwork, domain and hosting are still open.
 
+## Project context
+
+This repository is the lightweight portfolio and publishing site for Pawl
+Boracchi. It introduces the author, presents tabletop games, and mirrors selected
+Patreon posts on a browsable blog. The site is built with Zola templates and
+plain CSS, with Markdown as the source for pages and posts.
+
+- The homepage introduces the author and highlights the games.
+- The Games section is populated from `content/games/`; each game has its own
+  page. Geste uses the supplied cover image as the background for its card and
+  detail page (`static/images/geste-cover.jpeg`).
+- The blog contains imported Patreon posts and their local media. See the sync
+  guide and inventory before changing imports; preserve post IDs, slugs, source
+  timestamps, editorial decisions, and hash safeguards.
+- The visual system is intentionally simple: dark colors, system fonts, and
+  responsive CSS without a JavaScript build chain.
+
+New posts default to review. Do not bypass Patreon access restrictions or reuse
+another project's content, campaign ID, editorial decisions, or brand assets.
+Building locally does not deploy the site.
+
 ## Preview and build
 
 Requires Zola (verified with 0.22.1):

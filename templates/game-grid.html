@@ -1,5 +1,5 @@
 <div class="game-grid">
 {% for game in games.pages %}
-  <article class="game-card"><p class="eyebrow">{{ game.extra.label }}</p><h3><a href="{{ game.permalink }}">{{ game.title }}</a></h3><p>{{ game.description }}</p></article>
+  <article class="game-card{% if game.slug == 'geste' %} game-card-geste{% endif %}"{% if game.slug == 'geste' %} style="--geste-bg: url('{{ get_url(path='images/geste-cover.jpeg') }}')"{% endif %}><p class="eyebrow">{{ game.extra.label }}</p><h3><a href="{{ game.permalink }}">{{ game.title }}</a></h3><p>{{ game.description }}</p></article>
 {% endfor %}
 </div>
