@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Blog — {{ config.title }}{% endblock %}
+{% block content %}
+<section class="wrap section archive-page blog-archive">
+  <div class="blog-heading">
+    <h1 class="page-title">Blog</h1>
+    <a class="blog-subscribe" href="{{ get_url(path='blog/rss.xml') }}">Subscribe via RSS</a>
+  </div>
+  <p class="blog-intro">Public posts from <a href="{{ config.extra.patreon_url }}">Pawl's Patreon</a>, where you can follow along and join the discussion.</p>
+  <div class="blog-list">
+  {% for post in paginator.pages %}
+    <article class="blog-card">
+      {% if post.extra.cover %}<a class="blog-card-image" href="{{ post.permalink }}" tabindex="-1" aria-hidden="true"><img src="{{ get_url(path=post.extra.cover) }}" alt="" loading="lazy"></a>{% endif %}
+      <div>
+        <h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+        <time class="blog-date" datetime="{{ post.date }}">{{ post.date | date(format='%d %B %Y') }}</time>
+      </div>
+    </article>
+  {% else %}<p>Design notes and updates are available on <a href="{{ config.extra.patreon_url }}">Patreon</a>.</p>{% endfor %}
+  </div>
+  {% if paginator.number_pagers > 1 %}
+  <nav class="blog-pagination" aria-label="Blog pages">
+    {% if paginator.previous %}<a href="{{ paginator.previous }}">Newer posts</a>{% endif %}
+    <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+    {% if paginator.next %}<a href="{{ paginator.next }}">Older posts</a>{% endif %}
+  </nav>
+  {% endif %}
+</section>
+{% endblock %}

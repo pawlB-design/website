@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  <meta name="description" content="{% if page is defined and page.description %}{{ page.description }}{% elif section is defined and section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
+  {% if current_url is defined %}<link rel="canonical" href="{{ current_url | safe }}">{% endif %}
+  <link rel="stylesheet" href="{{ get_url(path='site.css', cachebust=true) }}">
+  <link rel="alternate" type="application/rss+xml" title="Pawl Boracchi — Blog" href="{{ get_url(path='blog/rss.xml') }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="{{ get_url(path='@/_index.md') }}">Pawl Boracchi<span>Games & strange worlds</span></a>
+    <nav aria-label="Main navigation">
+      <a href="{{ get_url(path='@/games/_index.md') }}">Games</a>
+      <a href="{{ get_url(path='@/blog/_index.md') }}">Blog</a>
+      <a href="{{ config.extra.patreon_url }}">Patreon</a>
+    </nav>
+  </header>
+  <main id="main">{% block content %}{% endblock %}</main>
+  <footer class="wrap"><span>Pawl Boracchi</span><a href="{{ config.extra.patreon_url }}">Follow on Patreon</a></footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero wrap">
+  <p class="eyebrow">Independent tabletop games</p>
+  <h1>Small games.<br>Strange worlds.</h1>
+  <div class="intro">{{ section.content | safe }}</div>
+  <a class="button" href="{{ get_url(path='@/games/_index.md') }}">Explore the games</a>
+</section>
+<section class="wrap section">
+  <div class="section-heading"><h2>The games</h2><a href="{{ get_url(path='@/games/_index.md') }}">All games</a></div>
+  {% set games = get_section(path='games/_index.md') %}
+  {% include 'game-grid.html' %}
+</section>
+<section class="wrap section">
+  <div class="section-heading"><h2>From the blog</h2><a href="{{ get_url(path='@/blog/_index.md') }}">All posts</a></div>
+  {% set blog = get_section(path='blog/_index.md') %}
+  {% for post in blog.pages | slice(end=3) %}
+  <article class="post-row"><time datetime="{{ post.date }}">{{ post.date | date(format='%d %B %Y') }}</time><h3><a href="{{ post.permalink }}">{{ post.title }}</a></h3></article>
+  {% else %}<p>For the latest design notes and updates, visit <a href="{{ config.extra.patreon_url }}">Patreon</a>.</p>{% endfor %}
+</section>
+{% endblock %}

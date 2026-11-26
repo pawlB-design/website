@@ -1,0 +1,5 @@
+<div class="game-grid">
+{% for game in games.pages %}
+  <article class="game-card"><p class="eyebrow">{{ game.extra.label }}</p><h3><a href="{{ game.permalink }}">{{ game.title }}</a></h3><p>{{ game.description }}</p></article>
+{% endfor %}
+</div>

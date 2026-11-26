@@ -1,0 +1,11 @@
+base_url = "http://127.0.0.1:1111"
+title = "Pawl Boracchi"
+description = "Tabletop games and design notes by Pawl Boracchi."
+default_language = "en"
+compile_sass = false
+build_search_index = false
+generate_feeds = false
+feed_filenames = ["rss.xml"]
+
+[extra]
+patreon_url = "https://www.patreon.com/c/Pawl_Boracchi"
